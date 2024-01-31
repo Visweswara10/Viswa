@@ -1,0 +1,50 @@
+Pairwise swap of linked list 1
+
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class LinkedList:
+    def __init__(self):
+        self.head=self.tail=None
+    def insert(self,data):
+        n=Node(data)
+        if self.head==None:
+            self.head=self.tail=n
+            return 
+        self.tail.next=n
+        self.tail=n
+    def reverse(self):
+        lsth=Node(0)
+        lst=lsth
+        temp=self.head
+        while temp and temp.next:
+            t1=temp
+            t2=temp.next
+            t1.next=t2.next
+            t2.next=t1
+            lst.next=t2
+            lst=temp
+            temp=temp.next
+        self.head=lsth.next
+        
+        
+    def show(self):
+        temp=self.head
+        while temp:
+            print(temp.data)
+            temp=temp.next
+            
+s=LinkedList()
+while True:
+    x=int(input())
+    if x!=-1:
+        s.insert(x)
+    else:
+        break
+s.reverse()
+s.show()
+
+        
+        
