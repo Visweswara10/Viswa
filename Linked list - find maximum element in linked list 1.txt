@@ -1,0 +1,32 @@
+Linked list - find maximum element in linked list 1
+
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class LinkedList:
+    def __init__(self):
+        self.head=self.tail=None
+    def insert(self,data):
+        n=Node(data)
+        if self.head==None:
+            self.head=self.tail=n
+        else:
+            self.tail.next=n
+            self.tail=n
+    def maxi(self):
+        temp=self.head
+        maxi=temp.data
+        while temp!=None:
+            if maxi<temp.data:
+                maxi=temp.data
+            temp=temp.next
+        print(maxi)
+s=LinkedList()
+while True:
+    x=int(input())
+    if x<0:
+        break
+    s.insert(x)
+s.maxi()
