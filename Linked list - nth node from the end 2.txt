@@ -1,0 +1,43 @@
+Linked list - nth node from the end 2
+
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class LinkedList:
+    def __init__(self):
+        self.head=self.tail=None
+    def insert(self,data):
+        n=Node(data)
+        if self.head==None:
+            self.head=self.tail=n
+            return 
+        self.tail.next=n
+        self.tail=n
+    def search(self):
+        temp=self.head
+        c=0
+        while temp:
+            c+=1
+            temp=temp.next
+        n=c-k
+        temp=self.head
+        c=0
+        while temp:
+            c+=1
+            if c==n:
+                print(temp.next.data,"is the nth node element in the list")
+                return
+            temp=temp.next
+        print("There is no nth node in the list")
+            
+s=LinkedList()
+while True:
+    x=int(input())
+    if x!=-1:
+        s.insert(x)
+    else:
+        break
+k=int(input())
+s.search()
