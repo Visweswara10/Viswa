@@ -1,0 +1,46 @@
+Linked list - append without duplicates 1
+
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class LinkedList:
+    def __init__(self):
+        self.head=self.tail=None
+    def insert(self,data):
+        n=Node(data)
+        if self.head==None:
+            self.head=self.tail=n
+            return 
+        self.tail.next=n
+        self.tail=n
+    def modify(self):
+        a=[]
+        nodehead=Node(0)
+        newnode=nodehead
+        temp=self.head
+        while temp:
+            if temp.data not in a:
+                a.append(temp.data)
+            temp=temp.next
+        for i in range(len(a)):
+            newnode.next=Node(a[i])
+            newnode=newnode.next
+        self.head=nodehead.next
+    def show(self):
+        temp=self.head
+        while temp:
+            print(temp.data)
+            temp=temp.next
+    
+
+s=LinkedList()
+while True:
+    x=int(input())
+    if x!=-1:
+        s.insert(x)
+    else:
+        break
+s.modify()
+s.show()
