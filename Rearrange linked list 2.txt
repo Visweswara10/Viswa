@@ -1,0 +1,60 @@
+Rearrange linked list 2
+
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class LinkedList:
+    def __init__(self):
+        self.head=self.tail=None
+    def insert(self,data):
+        n=Node(data)
+        if self.head==None:
+            self.head=self.tail=n
+            return 
+        self.tail.next=n
+        self.tail=n
+    def middle(self):
+        p1=self.head
+        p2=self.head
+        while p2 and p2.next:
+            p1=p1.next
+            p2=p2.next.next
+        return p1
+    def reverse(self,mid):
+        temp=mid
+        prev=None
+        while temp:
+            nxt=temp.next
+            temp.next=prev
+            prev=temp
+            temp=nxt
+        return prev
+    def rearrange(self,prev,mid):
+        temp=self.head
+        while temp and prev:
+            t1=temp.next
+            t2=prev.next
+            temp.next=prev
+            prev.next=t1
+            temp=t1
+            prev=t2
+        mid.next=None
+    def show(self):
+        temp=self.head
+        while temp:
+            print(temp.data)
+            temp=temp.next
+            
+s=LinkedList()
+while True:
+    x=int(input())
+    if x!=-1:
+        s.insert(x)
+    else:
+        break
+mid=s.middle()
+prev=s.reverse(mid)
+s.rearrange(prev,mid)
+s.show()
